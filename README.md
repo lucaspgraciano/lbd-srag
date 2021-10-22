@@ -1,9 +1,9 @@
-#Trabalho disciplina Laboratório de Banco de dados
-##Integrantes:
+# Trabalho disciplina Laboratório de Banco de dados
+### Integrantes:
 - Bruno;
 - Gustavo;
 - Lucas
 ---
-##Tecnologias:
+### Tecnologias:
 - Python3;
 - Postgres;
