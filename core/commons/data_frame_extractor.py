@@ -6,7 +6,7 @@ import pandas as pd
 
 class DataFrameExtractor:
     RESOURCES_ROOT_DIR = 'resources'
-    SPREADSHEET_FILENAME = 'INFLUD-25-10-2021.csv'
+    SPREADSHEET_FILENAME = 'INFLUD-15-11-2021.csv'
     SEPARATOR = ';'
     CHUNKSIZE = 10 ** 5
 

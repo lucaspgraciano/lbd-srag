@@ -8,9 +8,10 @@ class App:
         self.db = None
 
     def run(self):
-        self.__get_spreadsheet_data()
+        # self.__get_spreadsheet_data()
         self.__create_database_connection()
         self.__create_main_schema()
+        # self.__insert_data_into_database()
 
     def __get_spreadsheet_data(self):
         data_frame_extractor = DataFrameExtractor()
@@ -24,3 +25,8 @@ class App:
         main_query = open('core/schema/main.sql', 'r').read()
         self.db.execute(main_query)
 
+    def __insert_data_into_database(self):
+        count = 0
+        for chunks in self.data:
+            count += 1
+        logging.debug(count)
