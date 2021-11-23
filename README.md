@@ -2,12 +2,12 @@
 ## Integrantes:
 - Bruno
 - Gustavo
-- Luca
+- Lucas
 ---
 ## Tecnologias:
 - Python3
 - Pip
-- Postgres
+- PostgreSQL
 ---
 ## Instalação:
 Instale as dependências da aplicação:
