@@ -239,16 +239,16 @@ CREATE SEQUENCE covid.registro_registro_pk_seq;
 CREATE TABLE covid.registro (
                 registro_pk INTEGER NOT NULL DEFAULT nextval('covid.registro_registro_pk_seq'),
                 dt_notific DATE,
-                sem_not VARCHAR(6),
+                sem_not VARCHAR,
                 dt_sin_pri DATE,
-                sem_pri VARCHAR(6),
-                sg_uf_not VARCHAR(2),
-                id_regiona VARCHAR(6),
-                co_regiona VARCHAR(6),
-                id_municip VARCHAR(6),
-                co_mun_not VARCHAR(6),
-                id_unidade VARCHAR(7),
-                co_uni_not VARCHAR(7),
+                sem_pri VARCHAR,
+                sg_uf_not VARCHAR,
+                id_regiona VARCHAR,
+                co_regiona VARCHAR,
+                id_municip VARCHAR,
+                co_mun_not VARCHAR,
+                id_unidade VARCHAR,
+                co_uni_not VARCHAR,
                 CONSTRAINT registro_pk PRIMARY KEY (registro_pk)
 );
 

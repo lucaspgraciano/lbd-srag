@@ -23,10 +23,9 @@ class Database:
         self.db = self.client.cursor()
         logging.info('Banco de dados conectado com sucesso')
 
-    def execute(self, query):
-        self.db.execute(query)
+    def execute(self, query, params=None):
+        self.db.execute(query, params)
         self.client.commit()
-        logging.info('Query executada com sucesso')
 
     def close(self):
         self.db.close()
