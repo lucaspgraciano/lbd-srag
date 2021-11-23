@@ -12,3 +12,4 @@ class Logger:
         line_format = '[%(asctime)s] | %(levelname)s : %(message)s'
         date_format = '%d-%m-%Y %H:%M:%S'
         logging.basicConfig(format=line_format, datefmt=date_format, level=self.LOG_LEVEL, handlers=[console_handler])
+        logging.info('Logger configurado com sucesso')
