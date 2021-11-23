@@ -1,15 +1,15 @@
 #Trabalho disciplina Laboratório de Banco de dados
-##Integrantes:
+## Integrantes:
 - Bruno
 - Gustavo
 - Luca
 ---
-##Tecnologias:
+## Tecnologias:
 - Python3
 - Pip
 - Postgres
 ---
-##Instalação:
+## Instalação:
 Instale as dependências da aplicação:
 
 `pip install -r requirements.txt`
