@@ -3,12 +3,12 @@
 - Bruno
 - Gustavo
 - Lucas
----
+
 ## Tecnologias:
 - Python3
 - Pip
 - PostgreSQL
----
+
 ## Instalação:
 Instale as dependências da aplicação:
 
