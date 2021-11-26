@@ -19,6 +19,7 @@ class DataInsertion:
         self.__insert_into_agente_et_antigenico(row)
         self.__insert_into_agente_et_rtpcr(row)
         self.__insert_into_teste_sorologico(row)
+        self.__insert_into_conclusao(row)
 
     def __insert_into_registro(self, row):
         dt_notific = Utils.convert_string_to_date(row.DT_NOTIFIC)
@@ -238,3 +239,15 @@ class DataInsertion:
             (dt_co_sor, tp_sor, out_sor, sor_out, res_igg, res_igm, res_iga, dt_res)
         )
 
+    def __insert_into_conclusao(self, row):
+        classi_fin = Utils.check_nullity_of_the_value(row.CLASSI_FIN)
+        classi_out = Utils.check_nullity_of_the_value(row.CLASSI_OUT)
+        criterio = Utils.check_nullity_of_the_value(row.CRITERIO)
+        evolucao = Utils.check_nullity_of_the_value(row.EVOLUCAO)
+        dt_evoluca = Utils.convert_string_to_date(row.DT_EVOLUCA)
+        dt_encerra = Utils.convert_string_to_date(row.DT_ENCERRA)
+        dt_digita = Utils.convert_string_to_date(row.DT_DIGITA)
+        self.connection.execute(
+            """INSERT INTO covid.conclusao (classi_fin, classi_out, criterio, evolucao, dt_evoluca, dt_encerra, dt_digita) VALUES (%s, %s, %s, %s, %s, %s, %s);""",
+            (classi_fin, classi_out, criterio, evolucao, dt_evoluca, dt_encerra, dt_digita)
+        )

@@ -33,8 +33,6 @@ class App:
         logging.info('Iniciando a inserção de dados')
         start = time.time()
         for index, row in enumerate(self.data.itertuples()):
-            if index == 500:
-                break
             data_inserter.run(row)
         end = time.time()
         logging.info('Inserção de dados concluída em {:.2f} segundos'.format(end - start))

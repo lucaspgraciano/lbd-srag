@@ -265,5 +265,20 @@ CREATE TABLE covid.paciente (
                 CONSTRAINT paciente_pk PRIMARY KEY (paciente_pk)
 );
 
-
 ALTER SEQUENCE covid.paciente_paciente_pk_seq OWNED BY covid.paciente.paciente_pk;
+
+CREATE SEQUENCE covid.conclusao_conclusao_pk_seq;
+
+CREATE TABLE covid.conclusao (
+                conclusao_pk INTEGER NOT NULL DEFAULT nextval('covid.conclusao_conclusao_pk_seq'),
+                classi_fin VARCHAR,
+                classi_out VARCHAR,
+                criterio VARCHAR,
+                evolucao VARCHAR,
+                dt_evoluca DATE,
+                dt_encerra DATE,
+                dt_digita DATE,
+                CONSTRAINT conclusao_pk PRIMARY KEY (conclusao_pk)
+);
+
+ALTER SEQUENCE covid.conclusao_conclusao_pk_seq OWNED BY covid.conclusao.conclusao_pk;
