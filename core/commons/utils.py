@@ -7,7 +7,7 @@ class Utils:
 
     @staticmethod
     def check_nullity_of_the_value(value):
-        if value == Utils.NULL_CSV_VALUE:
+        if str(value) == Utils.NULL_CSV_VALUE:
             return None
         else:
             return str(value)
@@ -15,7 +15,7 @@ class Utils:
     @staticmethod
     def convert_string_to_date(string):
         try:
-            if string == 'nan':
+            if str(string) == Utils.NULL_CSV_VALUE:
                 return None
             else:
                 return datetime.strptime(str(string), Utils.DATE_TYPE_MODEL)

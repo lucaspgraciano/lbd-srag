@@ -12,7 +12,13 @@ class DataInsertion:
         self.__insert_into_dados_residencia(row)
         self.__insert_into_dados_clinicos(row)
         self.__insert_into_sinais_sintomas(row)
-
+        self.__insert_into_fator_risco(row)
+        self.__insert_into_mae_vacina(row)
+        self.__insert_into_dados_atendimento(row)
+        self.__insert_into_dados_lab(row)
+        self.__insert_into_agente_et_antigenico(row)
+        self.__insert_into_agente_et_rtpcr(row)
+        self.__insert_into_teste_sorologico(row)
 
     def __insert_into_registro(self, row):
         dt_notific = Utils.convert_string_to_date(row.DT_NOTIFIC)
@@ -97,5 +103,138 @@ class DataInsertion:
         self.connection.execute(
             """INSERT INTO covid.sinais_sintomas (febre, tosse, garganta, dispneia, desc_resp, saturacao, diarreia, vomito, dor_abd, fadiga, perd_olft, perd_pala, outro_sin, outro_des) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);""",
             (febre, tosse, garganta, dispneia, desc_resp, saturacao, diarreia, vomito, dor_abd, fadiga, perd_olft, perd_pala, outro_sin, outro_des)
+        )
+
+    def __insert_into_fator_risco(self, row):
+        puerpera = Utils.check_nullity_of_the_value(row.PUERPERA)
+        cardiopati = Utils.check_nullity_of_the_value(row.CARDIOPATI)
+        hematologi = Utils.check_nullity_of_the_value(row.HEMATOLOGI)
+        sind_down = Utils.check_nullity_of_the_value(row.SIND_DOWN)
+        hepatica = Utils.check_nullity_of_the_value(row.HEPATICA)
+        asma = Utils.check_nullity_of_the_value(row.ASMA)
+        diabetes = Utils.check_nullity_of_the_value(row.DIABETES)
+        neurologic = Utils.check_nullity_of_the_value(row.NEUROLOGIC)
+        pneumopati = Utils.check_nullity_of_the_value(row.PNEUMOPATI)
+        imunodepre = Utils.check_nullity_of_the_value(row.IMUNODEPRE)
+        renal = Utils.check_nullity_of_the_value(row.RENAL)
+        obesidade = Utils.check_nullity_of_the_value(row.OBESIDADE)
+        obes_imc = Utils.check_nullity_of_the_value(row.OBES_IMC)
+        out_morbi = Utils.check_nullity_of_the_value(row.OUT_MORBI)
+        morb_desc = Utils.check_nullity_of_the_value(row.MORB_DESC)
+        self.connection.execute(
+            """INSERT INTO covid.fator_risco (puerpera, cardiopati, hematologi, sind_down, hepatica, asma, diabetes, neurologic, pneumopati, imunodepre, renal, obesidade, obes_imc,  out_morbi, morb_desc) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);""",
+            (puerpera, cardiopati, hematologi, sind_down, hepatica, asma, diabetes, neurologic, pneumopati, imunodepre, renal, obesidade, obes_imc,  out_morbi, morb_desc)
+        )
+
+    def __insert_into_mae_vacina(self, row):
+        mae_vac = Utils.check_nullity_of_the_value(row.MAE_VAC)
+        dt_vac_mae = Utils.convert_string_to_date(row.DT_VAC_MAE)
+        m_amamenta = Utils.check_nullity_of_the_value(row.M_AMAMENTA)
+        dt_doseuni = Utils.check_nullity_of_the_value(row.DT_DOSEUNI)
+        dt_1_dose = Utils.convert_string_to_date(row.DT_1_DOSE)
+        dt_2_dose = Utils.convert_string_to_date(row.DT_2_DOSE)
+        self.connection.execute(
+            """INSERT INTO covid.mae_vacina (mae_vac, dt_vac_mae, m_amamenta, dt_doseuni, dt_1_dose, dt_2_dose) VALUES (%s, %s, %s, %s, %s, %s);""",
+            (mae_vac, dt_vac_mae, m_amamenta, dt_doseuni, dt_1_dose, dt_2_dose)
+        )
+
+    def __insert_into_dados_atendimento(self, row):
+        antiviral = Utils.check_nullity_of_the_value(row.ANTIVIRAL)
+        tp_antivir = Utils.check_nullity_of_the_value(row.TP_ANTIVIR)
+        out_antiv = Utils.check_nullity_of_the_value(row.OUT_ANTIV)
+        dt_antivir = Utils.convert_string_to_date(row.DT_ANTIVIR)
+        hospital = Utils.check_nullity_of_the_value(row.HOSPITAL)
+        dt_interna = Utils.convert_string_to_date(row.DT_INTERNA)
+        sg_uf_inte = Utils.check_nullity_of_the_value(row.SG_UF_INTE)
+        id_rg_inte = Utils.check_nullity_of_the_value(row.ID_RG_INTE)
+        co_rg_inte = Utils.check_nullity_of_the_value(row.CO_RG_INTE)
+        id_mn_inte = Utils.check_nullity_of_the_value(row.ID_MN_INTE)
+        co_mu_inte = Utils.check_nullity_of_the_value(row.CO_MU_INTE)
+        uti = Utils.check_nullity_of_the_value(row.UTI)
+        dt_entuti = Utils.convert_string_to_date(row.DT_ENTUTI)
+        dt_saiduti = Utils.convert_string_to_date(row.DT_SAIDUTI)
+        suport_ven = Utils.check_nullity_of_the_value(row.SUPORT_VEN)
+        raiox_res = Utils.check_nullity_of_the_value(row.RAIOX_RES)
+        raiox_out = Utils.check_nullity_of_the_value(row.RAIOX_OUT)
+        dt_raiox = Utils.convert_string_to_date(row.DT_RAIOX)
+        tomo_res = Utils.check_nullity_of_the_value(row.TOMO_RES)
+        tomo_out = Utils.check_nullity_of_the_value(row.TOMO_OUT)
+        dt_tomo = Utils.convert_string_to_date(row.DT_TOMO)
+        amostra = Utils.check_nullity_of_the_value(row.AMOSTRA)
+        dt_coleta = Utils.convert_string_to_date(row.DT_COLETA)
+        tp_amostra = Utils.check_nullity_of_the_value(row.TP_AMOSTRA)
+        out_amost = Utils.check_nullity_of_the_value(row.OUT_AMOST)
+        self.connection.execute(
+            """INSERT INTO covid.dados_atendimento (antiviral, tp_antivir, out_antiv, dt_antivir, hospital, dt_interna, sg_uf_inte, id_rg_inte, co_rg_inte, id_mn_inte, co_mu_inte, uti, dt_entuti, dt_saiduti, suport_ven, raiox_res, raiox_out, dt_raiox, tomo_res, tomo_out, dt_tomo, amostra, dt_coleta, tp_amostra, out_amost) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);""",
+            (antiviral, tp_antivir, out_antiv, dt_antivir, hospital, dt_interna, sg_uf_inte, id_rg_inte, co_rg_inte, id_mn_inte, co_mu_inte, uti, dt_entuti, dt_saiduti, suport_ven, raiox_res, raiox_out, dt_raiox, tomo_res, tomo_out, dt_tomo, amostra, dt_coleta, tp_amostra, out_amost)
+        )
+
+    def __insert_into_dados_lab(self, row):
+        tp_tes_an = Utils.check_nullity_of_the_value(row.TP_TES_AN)
+        dt_res_an = Utils.convert_string_to_date(row.DT_RES_AN)
+        res_an = Utils.check_nullity_of_the_value(row.RES_AN)
+        pcr_resul = Utils.check_nullity_of_the_value(row.PCR_RESUL)
+        dt_pcr = Utils.convert_string_to_date(row.DT_PCR)
+        tp_am_sor = Utils.check_nullity_of_the_value(row.TP_AM_SOR)
+        sor_out = Utils.check_nullity_of_the_value(row.SOR_OUT)
+        self.connection.execute(
+            """INSERT INTO covid.dados_lab (tp_tes_an, dt_res_an, res_an, pcr_resul, dt_pcr, tp_am_sor, sor_out) VALUES (%s, %s, %s, %s, %s, %s, %s);""",
+            (tp_tes_an, dt_res_an, res_an, pcr_resul, dt_pcr, tp_am_sor, sor_out)
+        )
+
+    def __insert_into_agente_et_antigenico(self, row):
+        pos_an_flu = Utils.check_nullity_of_the_value(row.POS_AN_FLU)
+        tp_flu_an = Utils.check_nullity_of_the_value(row.TP_FLU_AN)
+        pos_an_out = Utils.check_nullity_of_the_value(row.POS_AN_OUT)
+        an_sars2 = Utils.check_nullity_of_the_value(row.AN_SARS2)
+        an_vsr = Utils.check_nullity_of_the_value(row.AN_VSR)
+        an_para1 = Utils.check_nullity_of_the_value(row.AN_PARA1)
+        an_para2 = Utils.check_nullity_of_the_value(row.AN_PARA2)
+        an_para3 = Utils.check_nullity_of_the_value(row.AN_PARA3)
+        an_adeno = Utils.check_nullity_of_the_value(row.AN_ADENO)
+        an_outro = Utils.check_nullity_of_the_value(row.AN_OUTRO)
+        ds_an_out = Utils.check_nullity_of_the_value(row.DS_AN_OUT)
+        self.connection.execute(
+            """INSERT INTO covid.agente_et_antigenico (pos_an_flu, tp_flu_an, pos_an_out, an_sars2, an_vsr, an_para1, an_para2, an_para3, an_adeno, an_outro, ds_an_out) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);""",
+            (pos_an_flu, tp_flu_an, pos_an_out, an_sars2, an_vsr, an_para1, an_para2, an_para3, an_adeno, an_outro, ds_an_out)
+        )
+
+    def __insert_into_agente_et_rtpcr(self, row):
+        pos_pcrflu = Utils.check_nullity_of_the_value(row.POS_PCRFLU)
+        tp_flu_pcr = Utils.check_nullity_of_the_value(row.TP_FLU_PCR)
+        pcr_fluasu = Utils.check_nullity_of_the_value(row.PCR_FLUASU)
+        fluasu_out = Utils.check_nullity_of_the_value(row.FLUASU_OUT)
+        pcr_flubli = Utils.check_nullity_of_the_value(row.PCR_FLUBLI)
+        flubli_out = Utils.check_nullity_of_the_value(row.FLUBLI_OUT)
+        pos_pcrout = Utils.check_nullity_of_the_value(row.POS_PCROUT)
+        pcr_sars2 = Utils.check_nullity_of_the_value(row.PCR_SARS2)
+        pcr_vsr = Utils.check_nullity_of_the_value(row.PCR_VSR)
+        pcr_para1 = Utils.check_nullity_of_the_value(row.PCR_PARA1)
+        pcr_para2 = Utils.check_nullity_of_the_value(row.PCR_PARA2)
+        pcr_para3 = Utils.check_nullity_of_the_value(row.PCR_PARA3)
+        pcr_para4 = Utils.check_nullity_of_the_value(row.PCR_PARA4)
+        pcr_adeno = Utils.check_nullity_of_the_value(row.PCR_ADENO)
+        pcr_metap = Utils.check_nullity_of_the_value(row.PCR_METAP)
+        pcr_boca = Utils.check_nullity_of_the_value(row.PCR_BOCA)
+        pcr_rino = Utils.check_nullity_of_the_value(row.PCR_RINO)
+        pcr_outro = Utils.check_nullity_of_the_value(row.PCR_OUTRO)
+        ds_pcr_out = Utils.check_nullity_of_the_value(row.DS_PCR_OUT)
+        self.connection.execute(
+            """INSERT INTO covid.agente_et_rtpcr (pos_pcrflu, tp_flu_pcr, pcr_fluasu, fluasu_out, pcr_flubli, flubli_out, pos_pcrout, pcr_sars2, pcr_vsr, pcr_para1, pcr_para2, pcr_para3, pcr_para4, pcr_adeno, pcr_metap, pcr_boca, pcr_rino, pcr_outro, ds_pcr_out) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);""",
+            (pos_pcrflu, tp_flu_pcr, pcr_fluasu, fluasu_out, pcr_flubli, flubli_out, pos_pcrout, pcr_sars2, pcr_vsr, pcr_para1, pcr_para2, pcr_para3, pcr_para4, pcr_adeno, pcr_metap, pcr_boca, pcr_rino, pcr_outro, ds_pcr_out)
+        )
+
+    def __insert_into_teste_sorologico(self, row):
+        dt_co_sor = Utils.convert_string_to_date(row.DT_CO_SOR)
+        tp_sor = Utils.check_nullity_of_the_value(row.TP_SOR)
+        out_sor = Utils.check_nullity_of_the_value(row.OUT_SOR)
+        sor_out = Utils.check_nullity_of_the_value(row.SOR_OUT)
+        res_igg = Utils.check_nullity_of_the_value(row.RES_IGG)
+        res_igm = Utils.check_nullity_of_the_value(row.RES_IGM)
+        res_iga = Utils.check_nullity_of_the_value(row.RES_IGA)
+        dt_res = Utils.convert_string_to_date(row.DT_RES)
+        self.connection.execute(
+            """INSERT INTO covid.teste_sorologico (dt_co_sor, tp_sor, out_sor, sor_out, res_igg, res_igm, res_iga, dt_res) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);""",
+            (dt_co_sor, tp_sor, out_sor, sor_out, res_igg, res_igm, res_iga, dt_res)
         )
 
